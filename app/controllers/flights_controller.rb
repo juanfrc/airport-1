@@ -5,14 +5,14 @@ class FlightsController < ApplicationController
 
   def new
   	@flight = Flight.new
-    @flight.departue = Departue.new
+    @flight.departure = Departure.new
     @flight.arrival = Arrival.new
   end
 
   def create
   	@flight = Flight.new(flight_params)
 
-    if @flight.departue.date < @flight.arrival.date
+    if @flight.departure.date < @flight.arrival.date
       if @flight.save
         redirect_to flights_path
       else
@@ -49,7 +49,7 @@ class FlightsController < ApplicationController
 
   private
     def flight_params
-  	 params.require(:flight).permit(:airline_id, :number,departue_attributes: [:flight_id, :date, :status], arrival_attributes: [:flight_id, :date, :status])
+  	 params.require(:flight).permit(:airline_id, :number,departure_attributes: [:flight_id, :date, :status], arrival_attributes: [:flight_id, :date, :status])
     end
 
 end

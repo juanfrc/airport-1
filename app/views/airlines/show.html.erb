@@ -14,8 +14,8 @@
 			<% @flights.each do |flight| %>
 				<tr class="text-center">
 					<td><%= flight.number %></td>
-					<td><%= flight.departue.date.strftime("%H:%M %d-%b-%Y") %></td>
-					<td><%= flight.departue.status %></td>
+					<td><%= flight.departure.date.strftime("%H:%M %d-%b-%Y") %></td>
+					<td><%= flight.departure.status %></td>
 					<td><%= flight.arrival.date.strftime("%H:%M %d-%b-%Y") %></td>
 					<td><%= flight.arrival.status %></td>
 					<td><%= link_to 'Update', edit_flight_path(flight) %> |<%= link_to 'Delete', flight_path(flight), method: :delete, data: { confirm: "Are you sure? This will eliminate this flight's data"} %> </td>

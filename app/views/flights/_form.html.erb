@@ -19,11 +19,11 @@
   <%= f.collection_select(:airline_id, Airline.all, :id, :name) %><br>
   <hr>
   <h2>Departures:</h2>
-    <%= f.fields_for :departue do |departue| %>
-    	<%= departue.label :date %><br>
-    	<%= departue.datetime_select :date %><br>
-    	<%= departue.label :status%><br>
-    	<%= departue.select :status, Departue.statuses.keys.to_a %>
+    <%= f.fields_for :departure do |departure| %>
+    	<%= departure.label :date %><br>
+    	<%= departure.datetime_select :date %><br>
+    	<%= departure.label :status%><br>
+    	<%= departure.select :status, Departure.statuses.keys.to_a %>
     <% end %>
     <hr>
     <h2>Arrivals:</h2>
