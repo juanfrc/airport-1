@@ -1,25 +1,26 @@
-<h2><%= @airline.name %>'s flights</h2>
+<div class= "container">
+	<h2><%= @airline.name %>'s flights</h2>
 
-<table>
-	<thead>		
-		<th>Flight number</th>
-		<th>Departure time</th>
-		<th>Status</th>
-		<th>Arrival time</th>
-		<th>Status</th>
-		<th>Edit|Delete</th>
-	</thead>
-	<tbody>
-		<% @flights.each do |flight| %>
-			<tr class="text-center">
-				<td><%= flight.number %></td>
-				<td><%= flight.departue.date %></td>
-				<td><%= flight.departue.status %></td>
-				<td><%= flight.arrival.date %></td>
-				<td><%= flight.arrival.status %></td>
-				<td><%= link_to 'Update', edit_flight_path(flight) %> |<%= link_to 'Delete', flight_path(flight), method: :delete, data: { confirm: "Are you sure? This will eliminate this flight's data"} %> </td>
-			</tr>
-		<% end %>
-	</tbody>
-
-</table>
+	<table class= "table table-striped">
+		<thead>		
+			<th class= "text-center">Flight number</th>
+			<th class= "text-center">Departure time</th>
+			<th class= "text-center">Status</th>
+			<th class= "text-center">Arrival time</th>
+			<th class= "text-center">Status</th>
+			<th class= "text-center">Edit|Delete</th>
+		</thead>
+		<tbody>
+			<% @flights.each do |flight| %>
+				<tr class="text-center">
+					<td><%= flight.number %></td>
+					<td><%= flight.departue.date.strftime("%H:%M %d-%b-%Y") %></td>
+					<td><%= flight.departue.status %></td>
+					<td><%= flight.arrival.date.strftime("%H:%M %d-%b-%Y") %></td>
+					<td><%= flight.arrival.status %></td>
+					<td><%= link_to 'Update', edit_flight_path(flight) %> |<%= link_to 'Delete', flight_path(flight), method: :delete, data: { confirm: "Are you sure? This will eliminate this flight's data"} %> </td>
+				</tr>
+			<% end %>
+		</tbody>
+	</table>
+</div>

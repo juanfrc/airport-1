@@ -11,11 +11,17 @@ class FlightsController < ApplicationController
 
   def create
   	@flight = Flight.new(flight_params)
-    if @flight.save
-      redirect_to flights_path
-  	else
-  		render 'new'
-  	end
+
+    if @flight.departue.date < @flight.arrival.date
+      if @flight.save
+        redirect_to flights_path
+      else
+        render 'new'
+      end
+    else
+      @flight.errors[:base] << "Departure date cannot be greater than Arrival date"
+      render 'new'
+    end
   end
 
   def edit

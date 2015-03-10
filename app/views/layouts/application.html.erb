@@ -13,12 +13,15 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+	<ul class="nav nav-tabs">
+	  <li role="presentation"><%= link_to "Flights", flights_path %></li>
+	  <li role="presentation"><%= link_to "Airlines", airlines_path%></li>
+	</ul>
+
 
 <%= yield %>
 
 
-<%= link_to "Flights", flights_path, class: "btn btn-info" %>
-<%= link_to "Airlines", airlines_path, class: "btn btn-info" %>
 
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 </body>

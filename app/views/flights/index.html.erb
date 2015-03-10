@@ -1,29 +1,32 @@
-<h1>Flights</h1>
+<div class="container">
+	<h1>Flights</h1>
 
-<table>
-	<thead>
-		<th>Airline</th>
-		<th>Flight number</th>
-		<th>Departure time</th>
-		<th>Status</th>
-		<th>Arrival time</th>
-		<th>Status</th>
-		<th>Edit|Delete</th>
-	</thead>
-	<tbody>
-		<% @flights.each do |flight| %>
-			<tr class="text-center">
-				<td><%= Airline.find(flight.airline_id).name %></td>
-				<td><%= flight.number %></td>
-				<td><%= flight.departue.date %></td>
-				<td><%= flight.departue.status %></td>
-				<td><%= flight.arrival.date %></td>
-				<td><%= flight.arrival.status %></td>
-				<td><%= link_to 'Update', edit_flight_path(flight) %> |<%= link_to 'Delete', flight_path(flight), method: :delete, data: { confirm: "Are you sure? This will eliminate this flight's data"} %> </td>
-			</tr>
-		<% end %>
-	</tbody>
+	<table class="table table-striped text-center">
+		<thead>
+			<th class="text-center">Airline</th>
+			<th class="text-center">Flight number</th>
+			<th class="text-center">Departure time</th>
+			<th class="text-center">Status</th>
+			<th class="text-center">Arrival time</th>
+			<th class="text-center">Status</th>
+			<th class="text-center">Edit|Delete</th>
+		</thead>
+		<tbody>
+			<% @flights.each do |flight| %>
+				<tr class="text-center">
+					<td><%= Airline.find(flight.airline_id).name %></td>
+					<td><%= flight.number %></td>
+					<td><%= flight.departue.date.strftime("%H:%M %d-%b-%Y") %></td>
+					<td><%= flight.departue.status %></td>
+					<td><%= flight.arrival.date.strftime("%H:%M %d-%b-%Y") %></td>
+					<td><%= flight.arrival.status %></td>
+					<td><%= link_to 'Update', edit_flight_path(flight) %> |<%= link_to 'Delete', flight_path(flight), method: :delete, data: { confirm: "Are you sure? This will eliminate this flight's data"} %> </td>
+				</tr>
+			<% end %>
+		</tbody>
 
-</table>
+	</table>
 
-<%= link_to "Create a Flight", new_flight_path, class: "btn btn-info" %>
+	<%= link_to "Create a Flight", new_flight_path, class: "btn btn-info" %>
+
+</div>

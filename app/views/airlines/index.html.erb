@@ -1,20 +1,22 @@
-<h1>Airlines</h1>
+<div class= "container col-md-6 col-md-offset-1">
+	<h1>Airlines</h1>
 
-<table>
-	<thead>
-		<th>Name</th>
-		<th># Flights</th>
-	</thead>
-	<tbody>
-		<% @airlines.each do |airline| %>
-			<tr>
-				<td><%= link_to airline.name, airline_path(airline) %></td>
-				<td><%= Flight.where(airline_id: airline.id).count %></td>
-				<td><%= link_to 'Edit', edit_airline_path(airline) %></td>
-				<td><%= link_to 'Delete', airline_path(airline), method: :delete, data: { confirm: "Are you sure? This will eliminate all #{airline.name}'s flights" } %></td></td>
-			</tr>
-<% end %>
-</tbody>
-</table>
+	<table class="table table-striped text-center">
+		<thead>
+			<th class= "text-center">Name</th>
+			<th class= "text-center"># Flights</th>
+			<th class= "text-center">Edit | Delete</th>
+		</thead>
+		<tbody>
+			<% @airlines.each do |airline| %>
+				<tr>
+					<td><%= link_to airline.name, airline_path(airline) %></td>
+					<td><%= Flight.where(airline_id: airline.id).count %></td>
+					<td><%= link_to 'Edit', edit_airline_path(airline) %> | <%= link_to 'Delete', airline_path(airline), method: :delete, data: { confirm: "Are you sure? This will eliminate all #{airline.name}'s flights" } %></td></td>
+				</tr>
+	<% end %>
+	</tbody>
+	</table>
 
-<%= link_to "Create an airline", new_airline_path, class:'btn btn-info' %>
+	<%= link_to "Create an airline", new_airline_path, class:'btn btn-info' %>
+</div>

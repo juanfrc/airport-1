@@ -15,8 +15,8 @@
 <%= form_for(@airline, :html => {:class => "form-inline"}) do |f| %>
   
   <div class="form-group">
-    <%= f.label :name, 'Airline name:  '%>
-    <%= f.text_field :name, class: 'form-control', placeholder:"Category Name"%>
+    <%= f.label :name, 'Airline name:   '%>
+    <%= f.text_field :name, class: 'form-control', placeholder:"Airline"%>
      <%= f.button :submit => "", class: 'btn btn-info'%>
   </div>
 <% end %>
