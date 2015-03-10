@@ -1,0 +1,44 @@
+<% if @flight.errors.any? %>
+  <div class="alert alert-danger" role="alert">
+    <div id="error_explanation">
+      <h2><%= pluralize(@flight.errors.count, "error") %> prohibited this flight from being saved:</h2>
+
+      <ul>
+        <% @flight.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+<% end %>
+
+
+<%= form_for @flight do |f| %>
+  <%= f.label :number %><br>
+  <%= f.number_field :number %><br>
+  <%= f.label :airline_id, 'Airline' %>	<br>
+  <%= f.collection_select(:airline_id, Airline.all, :id, :name) %><br>
+
+<h2>Departures:</h2>
+  <%= f.fields_for :departue do |departue| %>
+  	<%= departue.label :date %><br>
+  	<%= departue.datetime_select :date %><br>
+  	<%= departue.label :status%><br>
+  	<%= departue.select :status, Departue.statuses.keys.to_a %>
+  <% end %>
+
+  <h2>Arrivals:</h2>
+
+   <%= f.fields_for :arrival do |arrival| %>
+  	<%= arrival.label :date %><br>
+  	<%= arrival.datetime_select :date %><br>
+  	<%= arrival.label :status%><br>
+  	<%= arrival.select :status, Arrival.statuses.keys.to_a %>
+  <% end %>
+
+<br>
+<br>
+  <%= f.button :submit => "", class: 'btn btn-info' %>
+
+
+<% end %>
